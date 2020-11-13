@@ -2,29 +2,30 @@
 const fs = require("fs");
 const path = require("path");
 
-
-var faker = require('faker')
-function generateEmployees () {
-  var employees = []
+var faker = require("faker");
+function generateEmployees() {
+  var products = [];
   for (var id = 0; id < 50; id++) {
-    var firstName = faker.name.firstName()
-    var lastName = faker.name.lastName()
-    var email = faker.internet.email()
-    employees.push({
-      "id": id,
-      "first_name": firstName,
-      "last_name": lastName,
-      "email": email
-    })
+    var name = faker.name.title();
+    var price = faker.commerce.price();
+    var description = faker.commerce.productDescription();
+    let image = faker.image.fashion();
+    let size = faker.random.number();
+    products.push({
+      id: id,
+      name: name,
+      price: price,
+      description: description,
+      image: image,
+      size: size,
+    });
   }
-  return { "employees": employees }
+  return { products: products };
 }
-
-
 
 const data = JSON.stringify(generateEmployees());
 const filepath = path.join(__dirname, "db.json");
 
-fs.writeFile(filepath, data, function(err) {
+fs.writeFile(filepath, data, function (err) {
   err ? console.log(err) : console.log("Mock DB created.");
 });
