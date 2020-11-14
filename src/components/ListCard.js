@@ -9,14 +9,7 @@ export const ListCard = ({ products }) => {
   return (
     <StyleListCard>
       {products.map((product) => (
-        <Card key={product.id}
-          product={{
-            name: product.name,
-            color: product.color,
-            price: product.price,
-            image: product.image,
-          }}
-        />
+        <Card key={product.id} product={product} />
       ))}
     </StyleListCard>
   );
