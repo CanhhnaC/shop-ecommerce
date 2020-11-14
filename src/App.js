@@ -1,4 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+
+import { Footer } from "./components/common/Footer";
+import { ListCard } from "./components/ListCard";
+import { GlobalStyle } from "./components/styles/GlobalStyle";
+
 import Input from "./components/Input";
 import useSelect from "./utils/hooks/useSelect";
 import {
@@ -6,6 +11,7 @@ import {
   RANDOM_BRAND,
   RANDOM_COLOR,
   RANDOM_SIZE,
+  SORT_PRODUCT,
 } from "./constants";
 import { getFilter } from "./utils/helpers";
 import { getProducts } from "./utils/api/productsApi";
@@ -16,19 +22,22 @@ const App = () => {
   const [brand, onBrand] = useSelect();
   const [size, onSize] = useSelect();
   const [price, onPrice] = useSelect();
+  const [sort, onSort] = useSelect();
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     const getData = async () => {
-      let options = getFilter([color, brand, size]);
+      let options = getFilter([color, brand, size, price, sort]);
+      console.log(options);
       await getProducts(options)
-        .then((result) => console.log(result))
+        .then((result) => setData(result.data))
         .catch((error) => console.log(error));
     };
     getData();
-  }, [color, brand, size]);
+  }, [color, brand, size, price, sort]);
 
   return (
-    <div style={{margin: "20px"}}>
+    <div style={{ margin: "20px" }}>
       <Input
         data={RANDOM_COLOR}
         onChange={onColor}
@@ -43,6 +52,17 @@ const App = () => {
       />
       <Input data={RANDOM_SIZE} onChange={onSize} value={size} label="Size" />
       <Price data={PRICE_PRODUCT} onChange={onPrice} value={price} />
+
+      <Input
+        data={SORT_PRODUCT}
+        onChange={onSort}
+        value={sort}
+        label="Sort By"
+      />
+
+      <Footer />
+      {data ? <ListCard products={data} /> : null}
+      <GlobalStyle />
     </div>
   );
 };

@@ -16,3 +16,5 @@ export const PRICE_PRODUCT = [
   { gte: 200, lte: 300 },
   { gte: 300, lte: 400 },
 ];
+
+export const SORT_PRODUCT = ["", "Price: Ascending", "Price: Descending"];
