@@ -3,17 +3,17 @@ const fs = require("fs");
 const _ = require("lodash");
 const path = require("path");
 
-var faker = require("faker");
+const faker = require("faker");
 
-var ranColor = ["red", "orange", "yellow", "green", "blue"];
-var ranSize = ["XS", "XS/S", "S", "S/M", "M"];
-var ranBrand = ["Louis Vuitton", "Lacoste", "Gucci", "Chanel", "Balenciaga"];
+const ranColor = ["red", "orange", "yellow", "green", "blue"];
+const ranSize = ["XS", "XS/S", "S", "S/M", "M"];
+const ranBrand = ["Louis Vuitton", "Lacoste", "Gucci", "Chanel", "Balenciaga"];
 
 function generateEmployees() {
-  var products = [];
-  for (var id = 0; id < 100; id++) {
-    var name = faker.name.title();
-    var price = faker.commerce.price();
+  const products = [];
+  for (let id = 0; id < 100; id++) {
+    let name = faker.name.title();
+    let price = _.random(20, 500);
     let image = faker.image.fashion();
     let color = _.sample(ranColor);
     let description = faker.lorem.words(50);
