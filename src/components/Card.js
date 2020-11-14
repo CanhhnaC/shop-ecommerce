@@ -10,7 +10,7 @@ export const Card = ({product}) => {
         </div>
         <div className="card-leftright">
           <div className="card-left">
-            <p>{product.brand}</p>
+            <p>{product.color}</p>
           </div>
           <div className="card-right">
             <span>${product.price}</span>
