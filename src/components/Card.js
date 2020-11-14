@@ -3,7 +3,7 @@ import { StyleCard } from './styles/StyleCard';
 
 export const Card = ({product}) => {
   return (
-    <StyleCard color={product.color}>
+    <StyleCard img={product.image}>
       <div className="card-content">
         <div className="card-img">
           <img src={product.image} alt=""/>

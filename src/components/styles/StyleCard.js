@@ -47,14 +47,15 @@ export const StyleCard = styled.div`
     margin: 10px 0 0 0;
     &::after {
     content: "";
-    background-color: ${({color}) => color};
+    background-image: url(${({img}) => img});
+    background-position: center;
     width: 17px;
     height: 17px;
     border-radius: 50%;
     cursor: pointer;
     position: absolute;
     top: 1.8px;
-    right: 1.8px;
+    right: 1.48px;
   }
 }
 `
