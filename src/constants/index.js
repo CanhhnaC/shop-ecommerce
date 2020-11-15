@@ -9,7 +9,9 @@ export const RANDOM_BRAND = [
   "Chanel",
   "Balenciaga",
 ];
+
 export const PRICE_PRODUCT = [
+  { gte: "", lte: "" },
   { gte: 80, lte: 100 },
   { gte: 100, lte: 150 },
   { gte: 150, lte: 200 },
