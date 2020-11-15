@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from 'styled-components'
+import Routes from "./routes.js"
 
 import { Footer } from "./components/common/Footer";
 import { ListCard } from "./components/ListCard";
@@ -34,7 +35,7 @@ const App = () => {
   }
 
   return (
-    <>
+    <Routes>
       <div>
         <Image src={banner} alt="Banner" />
         <h2>Holiday Looks</h2>
@@ -46,7 +47,7 @@ const App = () => {
         <Footer />
         <GlobalStyle />
       </div>
-    </>
+    <Routes />
   );
 };
 
