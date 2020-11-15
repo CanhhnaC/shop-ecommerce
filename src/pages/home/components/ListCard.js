@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import Card from "./Card";
+import Card from "../../../components/Card";
 
 const StyleListCard = styled.div`
   display: flex;
   flex-wrap: wrap;
+  padding: 30px;
 `;
 
 export const ListCard = ({ products }) => {

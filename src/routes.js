@@ -1,24 +1,22 @@
 import React from "react";
 import Mainlayout from "./components/layouts/MainLayout.js";
-import Pagination from "./components/common/Pagination.js";
-import Demo from "./pages/home/components/Demo.js"
+import Demo from "./pages/home"
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
-    Link
+    Route
   } from "react-router-dom";
-const Routes=()=>{
+const Routes = () => {
     return(
     <Router>
-        <Switch>
-            <Mainlayout>
-                <Switch>
-                    <Route path="/" component={Demo}>
-                    </Route>
-                </Switch>
-            </Mainlayout>
-        </Switch>
+      <Switch>
+        <Mainlayout>
+          <Switch>
+            <Route path="/" component={Demo}/>
+            <Route path="/product/:id" component={Demo}/>
+          </Switch>
+        </Mainlayout>
+      </Switch>
     </Router>
     )
 
