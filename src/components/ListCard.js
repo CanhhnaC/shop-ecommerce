@@ -4,7 +4,9 @@ import Card from "./Card";
 
 const StyleListCard = styled.div`
   display: flex;
+  flex-wrap: wrap;
 `;
+
 export const ListCard = ({ products }) => {
   return (
     <StyleListCard>

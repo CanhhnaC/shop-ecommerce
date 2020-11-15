@@ -1,11 +1,20 @@
+import React, { useEffect, useState } from "react";
+import styled from 'styled-components'
+
 import { Footer } from "./components/common/Footer";
 import { ListCard } from "./components/ListCard";
 import { GlobalStyle } from "./components/styles/GlobalStyle";
-
-import React, { useEffect, useState } from "react";
+import Search from "./components/Search";
 
 import { getProducts } from "./utils/api/productsApi";
-import Search from "./components/Search";
+
+import banner from "./assets/images/holiday.png";
+
+const Image = styled.img`
+  width: 100%;
+  height: auto;
+`
+
 
 const App = () => {
   const [data, setData] = useState([]);
@@ -25,13 +34,19 @@ const App = () => {
   }
 
   return (
-    <div style={{ margin: "20px" }}>
-      <Search onChange={handleChange}/>
+    <>
+      <div>
+        <Image src={banner} alt="Banner" />
+        <h2>Holiday Looks</h2>
+      </div>
+      <div style={{ margin: "20px" }}>
+        <Search onChange={handleChange} />
 
-      {data ? <ListCard products={data} /> : null}
-      <Footer />
-      <GlobalStyle />
-    </div>
+        {data ? <ListCard products={data} /> : null}
+        <Footer />
+        <GlobalStyle />
+      </div>
+    </>
   );
 };
 
