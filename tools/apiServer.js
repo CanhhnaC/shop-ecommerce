@@ -19,7 +19,6 @@ const router = jsonServer.router(path.join(__dirname, "db.json"));
 
 // To handle POST, PUT and PATCH you need to use a body-parser. Using JSON Server's bodyParser
 server.use(jsonServer.bodyParser);
-
 // Simulate delay on all requests
 server.use(function (req, res, next) {
   setTimeout(next, 500);

@@ -1,23 +1,32 @@
 /* eslint-disable no-console */
 const fs = require("fs");
+const _ = require("lodash");
 const path = require("path");
 
-var faker = require("faker");
+const faker = require("faker");
+
+const ranColor = ["red", "orange", "yellow", "green", "blue"];
+const ranSize = ["XS", "XS/S", "S", "S/M", "M"];
+const ranBrand = ["Louis Vuitton", "Lacoste", "Gucci", "Chanel", "Balenciaga"];
+
 function generateEmployees() {
-  var products = [];
-  for (var id = 0; id < 50; id++) {
-    var name = faker.name.title();
-    var price = faker.commerce.price();
-    var description = faker.commerce.productDescription();
+  const products = [];
+  for (let id = 0; id < 100; id++) {
+    let name = faker.name.title();
+    let price = _.random(20, 500);
     let image = faker.image.fashion();
-    let size = faker.random.number();
+    let color = _.sample(ranColor);
+    let description = faker.lorem.words(50);
+
     products.push({
       id: id,
       name: name,
-      price: price,
       description: description,
+      price: price,
+      color: color,
       image: image,
-      size: size,
+      size: _.sample(ranSize),
+      brand: _.sample(ranBrand),
     });
   }
   return { products: products };

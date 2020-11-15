@@ -4,11 +4,14 @@
   "private": true,
   "dependencies": {
     "axios": "^0.21.0",
+    "cors": "^2.8.5",
+    "lodash": "^4.17.20",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
     "styled-components": "^5.2.1",
+    "styled-normalize": "^8.0.7",
     "web-vitals": "^0.2.4"
   },
   "devDependencies": {
@@ -20,6 +23,7 @@
     "start:dev": "react-scripts start",
     "start:api": "node tools/apiServer.js",
     "start": "run-p start:dev start:api",
+    "prebuild": "node tools/createMockDb.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
