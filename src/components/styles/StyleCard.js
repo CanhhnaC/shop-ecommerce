@@ -2,6 +2,8 @@ import styled from 'styled-components'
 
 export const StyleCard = styled.div`
   padding: 30px;
+  flex: 0 0 30%;
+
   .card-leftright {
     display: flex;
     justify-content: space-between;
