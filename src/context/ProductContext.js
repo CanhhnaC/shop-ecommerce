@@ -7,7 +7,7 @@ export const ProductCtx = React.createContext();
 const ProductProvider = ({ children }) => {
   const [product, setProduct] = useState([]);
   const [cart, setCart] = useState([]);
-  const [page, setPage] = useState(3);
+  const [page, setPage] = useState(1);
   const [option, setOption] = useState("");
   const [total, setTotal] = useState(0);
 
