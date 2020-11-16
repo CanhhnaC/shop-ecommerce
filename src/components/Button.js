@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 const StyleButton = styled.button`
     color: #fff;
-    background: #383838;
+    background: black;
     width: 100px;
     height: 30px;
     border: none;

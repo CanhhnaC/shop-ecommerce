@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const StyleInput = styled.select`
   border: 1px solid #ddd;
-  width: 20%;
+  width: ${({width}) => width || "20%" };
   padding: 15px;
   cursor: pointer;
 
@@ -21,9 +21,9 @@ export const StyleInput = styled.select`
   }
 `;
 
-const Input = ({ data, onChange, value, name, label }) => {
+const Input = ({ data, onChange, value, name, label, width }) => {
   return (
-    <StyleInput value={value} onChange={onChange} name={name} >
+    <StyleInput value={value} onChange={onChange} name={name} width={width}>
       {data.map((option) => (
         <option key={option} value={option}>
           {option ? option : label}

@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { ListCard } from "./components/ListCard";
 import Search from "../../components/Search";
-import { GlobalStyle } from "../../components/styles/GlobalStyle";
 import { getProducts } from "../../utils/api/productsApi";
 import banner from "../../assets/images/holiday.png";
 import styled from 'styled-components'
 
 const Image = styled.img`
-  width: 100%;
+  max-width: 100%;
   height: auto;
 `
 const Home = () => {
