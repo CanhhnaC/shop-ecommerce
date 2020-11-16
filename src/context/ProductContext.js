@@ -16,7 +16,7 @@ const ProductProvider = ({ children }) => {
     carts: [cart, setCart],
     pages: [page, setPage],
     options: [option, setOption],
-    total: [total, setTotal],
+    totals: [total, setTotal],
   };
 
   useEffect(() => {

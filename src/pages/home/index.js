@@ -12,7 +12,7 @@ const Image = styled.img`
 `;
 const Home = () => {
   const { products, options, pages, totals } = useContext(ProductCtx);
-  const total = totals[0];
+  const [total] = totals;
   const data = products[0];
   const setOption = options[1];
   const [page, setPage] = pages;
