@@ -3,12 +3,11 @@ import styled from "styled-components";
 
 import { ListCard } from "./components/ListCard";
 import Search from "../../components/Search";
+import { getProducts } from "../../utils/api/productsApi";
 import banner from "../../assets/images/holiday.png";
 
-import { getProducts } from "../../utils/api/productsApi";
-
 const Image = styled.img`
-  width: 100%;
+  max-width: 100%;
   height: auto;
 `;
 
