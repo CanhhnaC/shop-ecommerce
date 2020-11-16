@@ -7,8 +7,8 @@ const MainLayout = ({ children }) => {
   return (
     <div>
       <GlobalStyle />
-      <Header></Header>
-      {children}
+      <Header />
+      <div style={{ marginTop: "140px" }}>{children}</div>
       <Footer></Footer>
     </div>
   );

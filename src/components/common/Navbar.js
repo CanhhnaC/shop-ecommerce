@@ -25,7 +25,7 @@ const Navbar = () => {
   return (
     <Navbar>
       <div className="icon">
-        <img src={gif_logo}></img>
+        <img src={gif_logo} alt="Logo"></img>
       </div>
       <div className="new_text">NEW!</div>
       <div>BRAS &amp; Lingerie</div>

@@ -21,7 +21,9 @@ const ProductProvider = ({ children }) => {
 
   useEffect(() => {
     (async function getData() {
-      await Axios.get(API_URL + `?_page=${page}&_limit=${LIMIT_PER_PAGE}&`)
+      await Axios.get(
+        API_URL + `${option}_page=${page}&_limit=${LIMIT_PER_PAGE}&`
+      )
         .then((result) => {
           setProduct(result.data);
           setTotal(result.headers["x-total-count"]);

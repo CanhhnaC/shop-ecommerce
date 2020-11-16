@@ -1,15 +1,47 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 import Pagination from "../../components/Pagination.js";
 import { ListCard } from "./components/ListCard";
 import Search from "../../components/Search";
 import banner from "../../assets/images/holiday.png";
 import { ProductCtx } from "../../context/ProductContext.js";
+import { LIMIT_PER_PAGE } from "../../constants/index.js";
 
-const Image = styled.img`
-  max-width: 100%;
-  height: auto;
+const Banner = styled.div`
+  position: relative;
+  img {
+    width: 100%;
+    height: auto;
+  }
+  & > div {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    div {
+      position: relative;
+      left: -50%;
+
+      h3 {
+        font-family: "Times New Roman", Times, serif;
+        font-size: 28px;
+        color: #fff;
+        letter-spacing: 0.25px;
+        text-transform: uppercase;
+      }
+    }
+  }
 `;
+
+const StylePagination = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const Main = styled.div`
+  margin: 0 20px;
+`;
+
 const Home = () => {
   const { products, options, pages, totals } = useContext(ProductCtx);
   const [total] = totals;
@@ -17,36 +49,38 @@ const Home = () => {
   const setOption = options[1];
   const [page, setPage] = pages;
 
-  const Main = styled.div`
-    .pagination {
-      display: flex;
-      justify-content: center;
-    }
-  `;
-  const LIMIT_PAGE = 12;
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [page]);
 
-  function handleChange(options) {
+  function handleSearch(options) {
     setOption(options);
   }
-  const onHandle = (event) => {
+  const handlePagination = (event) => {
     setPage(event);
   };
 
   return (
     <Main>
-      <div style={{ margin: "20px" }}>
-        <Image src={banner} alt="Banner" />
-        <Search onChange={handleChange} />
-        {data ? <ListCard products={data} /> : null}
-        <div className="pagination">
-          <Pagination
-            onhandle={onHandle}
-            start={page}
-            limit={LIMIT_PAGE}
-            totalPage={total}
-          ></Pagination>
+      <Banner>
+        <img src={banner} alt="Banner" />
+        <div>
+          <div>
+            <h3>HOLIDAY LOOKS</h3>
+          </div>
         </div>
-      </div>
+      </Banner>
+
+      <Search onChange={handleSearch} />
+      {data ? <ListCard products={data} /> : null}
+      <StylePagination>
+        <Pagination
+          onHandle={handlePagination}
+          start={page}
+          limit={LIMIT_PER_PAGE}
+          totalPage={total}
+        />
+      </StylePagination>
     </Main>
   );
 };

@@ -137,7 +137,7 @@ const StyleDetail = styled.div`
 `;
 const Detail = ({ match }) => {
   const [product, setProduct] = useState([]);
-  const [quatity, setQuatity] = useState(1);
+  const [quality, setQuality] = useState(1);
   const mathKey = parseInt(match.match.params.id);
 
   useEffect(() => {
@@ -147,7 +147,9 @@ const Detail = ({ match }) => {
         .catch((error) => console.log(error));
     };
     getData();
+    window.scrollTo(0, 0);
   }, [mathKey]);
+
   const [size, onSize] = useSelect();
   const [show, setShowDetail] = useState(false);
 
@@ -185,17 +187,17 @@ const Detail = ({ match }) => {
               <button
                 className="decrement"
                 onClick={() => {
-                  if (quatity > 1) {
-                    setQuatity(quatity - 1);
+                  if (quality > 1) {
+                    setQuality(quality - 1);
                   }
                 }}
               >
                 <span>-</span>
               </button>
-              <input type="tel" value={quatity} />
+              <input type="tel" value={quality} />
               <button
                 className="increment"
-                onClick={() => setQuatity(quatity + 1)}
+                onClick={() => setQuality(quality + 1)}
               >
                 <span>+</span>
               </button>
