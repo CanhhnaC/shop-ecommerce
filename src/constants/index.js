@@ -19,3 +19,4 @@ export const PRICE_PRODUCT = [
 ];
 
 export const SORT_PRODUCT = ["", "Price: Ascending", "Price: Descending"];
+export const LIMIT_PER_PAGE = 12
