@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const StyleInput = styled.select`
   border: 1px solid #ddd;
-  width: ${({width}) => width || "20%" };
+  width: ${({ width }) => width || "20%"};
   padding: 15px;
   cursor: pointer;
 

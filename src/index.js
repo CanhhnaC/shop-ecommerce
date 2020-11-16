@@ -1,12 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import ProductContext from "./context/ProductContext";
 import reportWebVitals from "./reportWebVitals";
 
 import Routes from "./routes";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Routes />
+    <ProductContext>
+      <Routes />
+    </ProductContext>
   </React.StrictMode>,
   document.getElementById("root")
 );
