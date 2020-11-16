@@ -138,7 +138,7 @@ const FooterCol = () => {
   for (const key in data) {
     if (data.hasOwnProperty(key)) {
       result.push(
-        <div>
+        <div key={key}>
           <h5 className="info-heading">{key}</h5>
           <ul className="info-list">
             {data[key].map((item, index) => {

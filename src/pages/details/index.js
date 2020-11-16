@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
@@ -71,6 +72,10 @@ const StyleDetail = styled.div`
       button {
         height: 50px;
         width: 100%;
+        a {
+          color: #fff;
+          text-decoration: none;
+        }
       }
     }
 
@@ -192,7 +197,11 @@ const Detail = ({match}) => {
           Eligible for a $2.62 donation to the cause of your choice. Select Cause | Learn More Powered By ShoppingGives
         </p>
         <div className="add-cart">
-          <Button>Add To Cart</Button>
+          <Button>
+            <Link to="/cart-shop">
+              Add To Cart
+            </Link>
+          </Button>
         </div>
         <div className="detail">
           <button onClick={() => setShowDetail(!show)}>Detail & Care</button>
