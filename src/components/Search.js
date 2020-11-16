@@ -21,7 +21,7 @@ const Search = ({ onChange }) => {
   const [order, onOrder] = useSelect();
 
   useEffect(() => {
-    onChange(getFilter([color, brand, size, price, order]));
+    onChange(getFilter([color, brand, size, order, 2, 12]));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [color, brand, size, price, order]);
 

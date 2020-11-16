@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 
 import { ListCard } from "./components/ListCard";
 import Search from "../../components/Search";
 import { getProducts } from "../../utils/api/productsApi";
 import banner from "../../assets/images/holiday.png";
+import { ProductCtx } from "../../context/ProductContext";
 
 const Image = styled.img`
   max-width: 100%;
@@ -12,7 +13,8 @@ const Image = styled.img`
 `;
 
 const Home = () => {
-  const [data, setData] = useState([]);
+  const { product } = useContext(ProductCtx);
+  const [data, setData] = product;
   const [options, setOptions] = useState("");
 
   useEffect(() => {
@@ -22,6 +24,7 @@ const Home = () => {
         .catch((error) => console.log(error));
     };
     getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [options]);
 
   function handleChange(options) {
