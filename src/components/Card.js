@@ -1,7 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from 'styled-components'
+import Button from "./Button";
 
-const StyleCard = styled.div`
+export const StyleCard = styled.div`
   padding: 40px 30px;
   flex: 0 0 25%;
 
@@ -39,7 +41,7 @@ const StyleCard = styled.div`
     line-height: 20px;
   }
 
-  .img img {
+  img {
       width: 100%;
       height: 400px;
       object-fit: cover;
@@ -71,13 +73,6 @@ const StyleCard = styled.div`
     /* right: 0; */
     left: 179px;
     top: -5px;
-    color: #fff;
-    background: #383838;
-    width: 100px;
-    height: 30px;
-    border: none;
-    outline: none;
-    cursor: pointer;
   }
 }
 `
@@ -85,9 +80,9 @@ const StyleCard = styled.div`
 export const Card = ({ product }) => {
   return (
     <StyleCard img={product.image}>
-      <div className="img">
+      <Link to = {`/product/${product.id}`}>
         <img src={product.image} alt="" />
-      </div>
+      </Link>
       <div className="content">
         <div className="left">
           <p>{product.color}</p>
@@ -100,7 +95,7 @@ export const Card = ({ product }) => {
       <h5>Brand: {product.brand}</h5>
       <h5>Size: {product.size}</h5>
       <div className="round">
-        <button>Add To Cart</button>
+        <Button>Add To Cart</Button>
       </div>
     </StyleCard>
   );

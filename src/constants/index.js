@@ -1,4 +1,4 @@
-export const API_URL = "http://localhost:3001/products";
+export const API_URL = "http://localhost:3001/products/";
 export const RANDOM_COLOR = ["", "red", "orange", "yellow", "green", "blue"];
 export const RANDOM_SIZE = ["", "XS", "XS/S", "S", "S/M", "M"];
 export const RANDOM_BRAND = [

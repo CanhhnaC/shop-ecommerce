@@ -3,7 +3,13 @@ import { ListCard } from "./components/ListCard";
 import Search from "../../components/Search";
 import { GlobalStyle } from "../../components/styles/GlobalStyle";
 import { getProducts } from "../../utils/api/productsApi";
+import banner from "../../assets/images/holiday.png";
+import styled from 'styled-components'
 
+const Image = styled.img`
+  width: 100%;
+  height: auto;
+`
 const Home = () => {
   const [data, setData] = useState([]);
   const [options, setOptions] = useState("");
@@ -24,10 +30,10 @@ const Home = () => {
   return (
     <>
       <div style={{ margin: "20px" }}>
+        <Image src={banner} alt="Banner" />
         <Search onChange={handleChange} />
 
         {data ? <ListCard products={data} /> : null}
-        <GlobalStyle />
       </div>
       </>
   );

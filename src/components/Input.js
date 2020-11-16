@@ -19,7 +19,6 @@ export const StyleInput = styled.select`
     box-shadow: 0 10px 15px rgba(0,0,0,.2);
     border: none;
   }
-
 `;
 
 const Input = ({ data, onChange, value, name, label }) => {
