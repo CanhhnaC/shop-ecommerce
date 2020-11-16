@@ -42,10 +42,10 @@ export const StyleCard = styled.div`
   }
 
   img {
-      max-width: 100%;
-      height: auto;
-      object-fit: cover;
-      cursor: pointer;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    cursor: pointer;
   }
 
   .round {
