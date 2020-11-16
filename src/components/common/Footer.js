@@ -135,13 +135,13 @@ const data = {
 
 const FooterCol = () => {
   let result = [];
-  for (const key in data) {
-    if (data.hasOwnProperty(key)) {
+  for (const element in data) {
+    if (data.hasOwnProperty(element)) {
       result.push(
-        <div>
-          <h5 className="info-heading">{key}</h5>
+        <div key={element}>
+          <h5 className="info-heading">{element}</h5>
           <ul className="info-list">
-            {data[key].map((item, index) => {
+            {data[element].map((item, index) => {
               return (
                 <li key={index}>
                   <Link to="/">{item}</Link>
@@ -158,7 +158,7 @@ const FooterCol = () => {
 
 export const Footer = () => {
   return (
-    <>
+    <div>
       <StyleFooterTop>
         {FooterCol()}
         <div className="info-col">
@@ -224,7 +224,7 @@ export const Footer = () => {
           </li>
         </ul>
       </StyleFooterBt>
-    </>
+    </div>
   );
 };
 
