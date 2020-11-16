@@ -14,7 +14,7 @@ function generateEmployees() {
   for (let id = 0; id < 100; id++) {
     let name = faker.name.title();
     let price = _.random(20, 500);
-    let image = faker.image.fashion();
+    let image = _.random(1, 25);
     let color = _.sample(ranColor);
     let description = faker.lorem.words(50);
 
@@ -24,7 +24,7 @@ function generateEmployees() {
       description: description,
       price: price,
       color: color,
-      image: image,
+      image: `/images/${image}.jpg`,
       size: _.sample(ranSize),
       brand: _.sample(ranBrand),
     });
