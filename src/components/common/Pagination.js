@@ -30,6 +30,7 @@ const Pagination = ({}) => {
       <li className="number">3</li>
       <li className="number">4</li>
       <li className="number">5</li>
+      <li>fdd</li>
       <li>
         <i class="fas fa-caret-right"></i>
       </li>
