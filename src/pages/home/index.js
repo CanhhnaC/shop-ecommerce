@@ -23,7 +23,6 @@ const Home = () => {
       justify-content: center;
     }
   `;
-  const START_FORM = 1;
   const LIMIT_PAGE = 12;
 
   function handleChange(options) {
@@ -42,7 +41,7 @@ const Home = () => {
         <div className="pagination">
           <Pagination
             onhandle={onHandle}
-            start={START_FORM}
+            start={page}
             limit={LIMIT_PAGE}
             totalPage={total}
           ></Pagination>
