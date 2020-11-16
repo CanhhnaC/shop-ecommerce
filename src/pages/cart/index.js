@@ -15,6 +15,7 @@ const StyleCart = styled.div`
     th {
       padding: 30px 20px;
     }
+
   }
 `
 
@@ -26,7 +27,7 @@ const Cart = () => {
 
       <thead className="cart-header">
         <tr>
-          <th>Added Items</th>
+          <th style={{textAlign: "left"}}>Added Items</th>
           <th>Size</th>
           <th>Color</th>
           <th>Price</th>

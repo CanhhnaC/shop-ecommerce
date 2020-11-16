@@ -3,7 +3,15 @@ import styled from 'styled-components';
 
 const StyleItem = styled.tr`
     td.content {
-      width: 30%;
+      display: flex;
+      text-align: left;
+      .img {
+        width: 50%;
+        height: 200px;
+        img {
+          height: 200px;
+        }
+      }
     }
     td.color, td.delete, td.total,td.price, td.size {
       width: 10%;
@@ -35,10 +43,13 @@ const Item = ({product}) => {
     <StyleItem>
         <td className="content">
             <div className="img">
+              <img alt="##" src={product.image}/>
             </div>
-            <p>{product.brand}</p>
-            <h3>{product.name}</h3>
-            <span>Style: {`${product.id}-${product.color}-${product.size}`}</span>
+            <div>
+              <p>{product.brand}</p>
+              <h3>{product.name}</h3>
+              <span>Style: {`${product.id}-${product.color}-${product.size}`}</span>
+            </div>
         </td>
         <td className="size">{product.size}</td>
         <td className="color">{product.color}</td>
@@ -60,7 +71,7 @@ const Item = ({product}) => {
             <span>{quatity*product.price}</span>
         </td>
         <td className="delete">
-            <span>delete</span>
+            <span><i class="fas fa-trash"></i></span>
         </td>
 
     </StyleItem>
