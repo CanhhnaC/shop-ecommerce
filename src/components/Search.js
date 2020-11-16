@@ -21,9 +21,9 @@ const Search = ({ onChange }) => {
   const [order, onOrder] = useSelect();
 
   useEffect(() => {
-    onChange(getFilter([color, brand, size, price, order]))
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [color, brand, size, price, order])
+    onChange(getFilter([color, brand, size, price, order]));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [color, brand, size, price, order]);
 
   return (
     <div>
@@ -35,7 +35,7 @@ const Search = ({ onChange }) => {
       />
 
       <Input data={RANDOM_SIZE} onChange={onSize} value={size} label="Size" />
-      
+
       <Input
         data={RANDOM_COLOR}
         onChange={onColor}
@@ -43,11 +43,7 @@ const Search = ({ onChange }) => {
         label="Color"
       />
 
-      <Price
-        data={PRICE_PRODUCT}
-        onChange={onPrice}
-        value={price}
-      />
+      <Price data={PRICE_PRODUCT} onChange={onPrice} value={price} />
 
       <Input
         data={SORT_PRODUCT}

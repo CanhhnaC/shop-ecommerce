@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.21.0",
     "lodash": "^4.17.20",
+    "prettier": "^2.1.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
@@ -25,8 +26,7 @@
     "prebuild": "node tools/createMockDb.js",
     "start:api": "json-server tools/db.json --port 3001",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "lint": "prettier --write \"src/**/*.js\""
   },
   "eslintConfig": {
     "extends": [

@@ -11,19 +11,19 @@ export const StyleInput = styled.select`
   font-size: 14px;
 
   &:focus {
-    outline:none
+    outline: none;
   }
 
   & option {
     padding: 10px;
-    box-shadow: 0 10px 15px rgba(0,0,0,.2);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
     border: none;
   }
 `;
 
 const Input = ({ data, onChange, value, name, label }) => {
   return (
-    <StyleInput value={value} onChange={onChange} name={name} >
+    <StyleInput value={value} onChange={onChange} name={name}>
       {data.map((option) => (
         <option key={option} value={option}>
           {option ? option : label}

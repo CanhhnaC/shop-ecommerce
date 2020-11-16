@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styled from 'styled-components'
+import styled from "styled-components";
 import Button from "./Button";
 
 export const StyleCard = styled.div`
@@ -10,26 +10,26 @@ export const StyleCard = styled.div`
   .content {
     display: flex;
     justify-content: space-between;
-    padding: .75rem 0 0 0;
+    padding: 0.75rem 0 0 0;
 
     .left p {
       text-transform: uppercase;
       color: #000;
-      font-size: .78125rem;
+      font-size: 0.78125rem;
       letter-spacing: 1px;
       text-align: left;
     }
 
     .right span {
-      letter-spacing: .5px;
+      letter-spacing: 0.5px;
       line-height: 0;
       color: #000;
-      font-size: .78125rem;
+      font-size: 0.78125rem;
     }
   }
 
   h4 {
-    font-size: .78125rem;
+    font-size: 0.78125rem;
     font-weight: 500;
     line-height: 35px;
     color: #333;
@@ -42,10 +42,10 @@ export const StyleCard = styled.div`
   }
 
   img {
-      width: 100%;
-      height: 400px;
-      object-fit: cover;
-      cursor: pointer;
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    cursor: pointer;
   }
 
   .round {
@@ -56,31 +56,31 @@ export const StyleCard = styled.div`
     position: relative;
     margin: 10px 0 0 0;
     &::after {
-    content: "";
-    background-image: url(${({img}) => img});
-    background-position: center;
-    width: 17px;
-    height: 17px;
-    border-radius: 50%;
-    cursor: pointer;
-    position: absolute;
-    top: 1.8px;
-    right: 1.48px;
-  }
+      content: "";
+      background-image: url(${({ img }) => img});
+      background-position: center;
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      cursor: pointer;
+      position: absolute;
+      top: 1.8px;
+      right: 1.48px;
+    }
 
-  button {
-    position: absolute;
-    /* right: 0; */
-    left: 179px;
-    top: -5px;
+    button {
+      position: absolute;
+      /* right: 0; */
+      left: 179px;
+      top: -5px;
+    }
   }
-}
-`
+`;
 
 export const Card = ({ product }) => {
   return (
     <StyleCard img={product.image}>
-      <Link to = {`/product/${product.id}`}>
+      <Link to={`/product/${product.id}`}>
         <img src={product.image} alt="" />
       </Link>
       <div className="content">

@@ -3,26 +3,25 @@ import gif_logo from "../../assets/images/logo-gif.PNG";
 import styled from "styled-components";
 const Navbar = () => {
   const Navbar = styled.div`
-	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-    font-weight:400;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-weight: 400;
     font-size: 0.8rem;
-    color:black;
+    color: black;
     display: flex;
-    margin-top:30px;
-    justify-content:center;
-    text-transform:uppercase;
-    div:hover{
-      color:gray;
+    margin-top: 30px;
+    justify-content: center;
+    text-transform: uppercase;
+    div:hover {
+      color: gray;
       cursor: pointer;
     }
-    .icon{
-      margin-top:-2.3%;
+    .icon {
+      margin-top: -2.3%;
     }
-    div{
-      margin-left:30px;
-
+    div {
+      margin-left: 30px;
     }
-  `
+  `;
   return (
     <Navbar>
       <div className="icon">

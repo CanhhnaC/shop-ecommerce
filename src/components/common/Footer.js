@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const StyleFooterTop = styled.div`
   display: flex;
@@ -9,7 +9,7 @@ const StyleFooterTop = styled.div`
 
   .info-heading {
     text-transform: uppercase;
-    font-size: .875rem;
+    font-size: 0.875rem;
     line-height: 30px;
     letter-spacing: 1.5px;
     margin-bottom: 0.75rem;
@@ -21,7 +21,7 @@ const StyleFooterTop = styled.div`
     a {
       text-decoration: none;
       text-transform: uppercase;
-      font-size: .6875rem;
+      font-size: 0.6875rem;
       letter-spacing: 1.75px;
       color: #000;
     }
@@ -30,10 +30,10 @@ const StyleFooterTop = styled.div`
   .newsletter-heading {
     text-transform: uppercase;
     color: #000;
-    font-size: .875rem;
+    font-size: 0.875rem;
     line-height: 25px;
     letter-spacing: 1.25px;
-    margin-bottom: .75rem;
+    margin-bottom: 0.75rem;
   }
 
   .footer-form {
@@ -72,8 +72,8 @@ const StyleFooterTop = styled.div`
       &::after {
         content: "";
         background-image: url("data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PScwIDAgMzIgMzInIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zyc+PHBhdGggZD0nTTMxIDE2bC0xNS0xNXY5aC0xNnYxMmgxNnY5eicgZmlsbD0nIzAwMDAwMCc+PC9wYXRoPjwvc3ZnPg==");
-        width: .8rem;
-        height: .8rem;
+        width: 0.8rem;
+        height: 0.8rem;
         cursor: pointer;
         position: absolute;
         top: 10px;
@@ -94,7 +94,8 @@ const StyleFooterTop = styled.div`
     float: right;
     width: auto;
     height: auto;
-  }`
+  }
+`;
 
 const StyleFooterBt = styled.div`
   padding: 0 7rem 2rem;
@@ -103,58 +104,69 @@ const StyleFooterBt = styled.div`
     margin-right: 50px;
     a {
       text-decoration: none;
-      font-size: .75rem;
+      font-size: 0.75rem;
       color: #000;
     }
-  }`
+  }
+`;
 
 const data = {
-  About: ["About","About Josie Cruz Natori", "Explore the Brands", "Natori Gives", "Careers"],
-  Help: ["Contact Us", "Your Account", "Shipping Methods", "Website Returns","FAQ"],
-  Shop: ["Locations", "Gift Cards", "International Shipping", "Student Discount"]
-}
+  About: [
+    "About",
+    "About Josie Cruz Natori",
+    "Explore the Brands",
+    "Natori Gives",
+    "Careers",
+  ],
+  Help: [
+    "Contact Us",
+    "Your Account",
+    "Shipping Methods",
+    "Website Returns",
+    "FAQ",
+  ],
+  Shop: [
+    "Locations",
+    "Gift Cards",
+    "International Shipping",
+    "Student Discount",
+  ],
+};
 
 const FooterCol = () => {
-  let result = []
+  let result = [];
   for (const key in data) {
     if (data.hasOwnProperty(key)) {
       result.push(
         <div>
           <h5 className="info-heading">{key}</h5>
           <ul className="info-list">
-            {
-              data[key].map((item, index) => {
-                return (
-                  <li key={index}>
-                    <Link to="/">{item}</Link>
-                  </li>
-                )
-              })
-            }
+            {data[key].map((item, index) => {
+              return (
+                <li key={index}>
+                  <Link to="/">{item}</Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
-      )
+      );
     }
   }
   return result;
-}
+};
 
 export const Footer = () => {
   return (
     <>
       <StyleFooterTop>
-        {
-          FooterCol()
-        }
+        {FooterCol()}
         <div className="info-col">
           <h5 className="newsletter-heading">
             Join our list and receive exclusives
           </h5>
           <div className="footer-form">
-            <input
-              type="email"
-              name="email"
-              placeholder="Your email address" />
+            <input type="email" name="email" placeholder="Your email address" />
             <button type="button"></button>
           </div>
           <ul className="socialLinks">
@@ -202,19 +214,13 @@ export const Footer = () => {
             </span>
           </li>
           <li>
-            <Link to="/">
-              Sitemap
-            </Link>
+            <Link to="/">Sitemap</Link>
           </li>
           <li>
-            <Link to="/">
-              Privacy Policy
-            </Link>
+            <Link to="/">Privacy Policy</Link>
           </li>
           <li>
-            <Link to="/">
-              Accessibility Statement
-            </Link>
+            <Link to="/">Accessibility Statement</Link>
           </li>
         </ul>
       </StyleFooterBt>
