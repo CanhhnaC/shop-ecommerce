@@ -50,22 +50,22 @@ const Header = () => {
           <ul>
             <li>
               <a href="/">
-                <i class="fas fa-search"></i>
+                <i className="fas fa-search"></i>
               </a>
             </li>
             <li>
               <a href="/">
-                <i class="far fa-heart"></i>
+                <i className="far fa-heart"></i>
               </a>
             </li>
             <li>
               <a href="/">
-                <i class="far fa-user"></i>
+                <i className="far fa-user"></i>
               </a>
             </li>
             <li>
               <a href="/">
-                <i class="fas fa-shopping-bag"></i>
+                <i className="fas fa-shopping-bag"></i>
               </a>
             </li>
           </ul>
