@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import Button from '../../components/Button';
+import React from "react";
+import styled from "styled-components";
+import Button from "../../components/Button";
 
 const StyleTotal = styled.div`
   display: flex;
@@ -18,17 +18,19 @@ const StyleTotal = styled.div`
         font-size: 15px;
         height: 35px;
       }
+    }
   }
-  }
-`
+`;
 const Total = () => {
   return (
     <StyleTotal>
       <ul>
         <li class="cart-total">
-          <li><strong>Subtotal:</strong></li>
+          <li>
+            <strong>Subtotal:</strong>
+          </li>
           <div class="cart-total-value">
-              <span>$262.00</span>
+            <span>$262.00</span>
           </div>
         </li>
         <li className="checkout">
@@ -37,6 +39,6 @@ const Total = () => {
       </ul>
     </StyleTotal>
   );
-}
+};
 
 export default Total;

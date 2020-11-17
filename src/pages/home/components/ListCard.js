@@ -8,11 +8,15 @@ const StyleListCard = styled.div`
   padding: 30px;
 `;
 
-export const ListCard = ({ products }) => {
+export const ListCard = ({ products, onhandleClick }) => {
   return (
     <StyleListCard>
       {products.map((product) => (
-        <Card key={product.id} product={product} />
+        <Card
+          onhandleClick={onhandleClick}
+          key={product.id}
+          product={product}
+        />
       ))}
     </StyleListCard>
   );

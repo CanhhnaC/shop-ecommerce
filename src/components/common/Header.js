@@ -1,9 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-
 import Navbar from "./Navbar.js";
+import { useHistory } from "react-router-dom";
 
 const Header = () => {
+  const history = useHistory();
+  const gotoCart = (e) => {
+    e.preventDefault();
+    history.push("/cart");
+  };
   const Header = styled.header`
     width: 100%;
     min-height: 130px;
@@ -64,7 +69,7 @@ const Header = () => {
               </a>
             </li>
             <li>
-              <a href="/">
+              <a onClick={(e) => gotoCart(e)}>
                 <i className="fas fa-shopping-bag"></i>
               </a>
             </li>

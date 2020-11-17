@@ -3,12 +3,13 @@ import styled from "styled-components";
 import Axios from "axios";
 const Pagination = ({ start, totalPage, limit, onhandle }) => {
   const pages = Math.ceil(totalPage / limit);
+  console.log(pages);
   const paginator = [];
   const [currentPage, setCurrentPage] = useState(start <= pages ? start : 1);
   let ellipsisLeft = false;
   let ellipsisRight = false;
   onhandle(currentPage);
-  for (let i = 1; i < pages; i++) {
+  for (let i = 1; i <= pages; i++) {
     if (i === currentPage) {
       paginator.push({ id: i, current: true, ellipsis: false });
     } else {

@@ -1,9 +1,7 @@
 import Axios from "axios";
 import React, { useEffect, useState } from "react";
 import { API_URL, LIMIT_PER_PAGE } from "../constants";
-
 export const ProductCtx = React.createContext();
-
 const ProductProvider = ({ children }) => {
   const [product, setProduct] = useState([]);
   const [cart, setCart] = useState([]);

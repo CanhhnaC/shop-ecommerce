@@ -9,8 +9,10 @@ const StyleButton = styled.button`
   outline: none;
   cursor: pointer;
 `;
-const Button = ({ children }) => {
-  return <StyleButton>{children}</StyleButton>;
+const Button = ({ children, id, onhandleClick }) => {
+  return (
+    <StyleButton onClick={() => onhandleClick(id)}>{children}</StyleButton>
+  );
 };
 
 export default Button;

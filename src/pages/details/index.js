@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../../components/Button";
@@ -6,7 +6,8 @@ import Input from "../../components/Input";
 import { RANDOM_SIZE } from "../../constants";
 import { getProducts } from "../../utils/api/productsApi";
 import useSelect from "../../utils/hooks/useSelect";
-
+import { ProductCtx } from "../../context/ProductContext.js";
+import { useHistory } from "react-router-dom";
 const StyleDetail = styled.div`
   display: flex;
   margin: 30px auto;
@@ -143,7 +144,30 @@ const StyleDetail = styled.div`
 const Detail = ({ match }) => {
   const [product, setProduct] = useState([]);
   const [quatity, setQuatity] = useState(1);
+  const { carts } = useContext(ProductCtx);
+  const history = useHistory();
+  const [cart, setCart] = carts;
   const mathKey = parseInt(match.match.params.id);
+  const onhandleAdd = (id) => {
+    let newCart = [...cart];
+    let iTempCart = newCart.find((item) => id.id === item.id);
+    console.log(iTempCart.count);
+    console.log(quatity);
+    if (iTempCart) {
+      iTempCart.count = iTempCart.count + quatity;
+      iTempCart = {
+        ...id,
+      };
+    } else {
+      iTempCart = {
+        ...id,
+        count: quatity,
+      };
+      newCart.push(iTempCart);
+    }
+    setCart(newCart);
+    history.push("/cart");
+  };
 
   useEffect(() => {
     const getData = async () => {
@@ -224,10 +248,8 @@ const Detail = ({ match }) => {
           Cause | Learn More Powered By ShoppingGives
         </p>
         <div className="add-cart">
-          <Button>
-            <Link to="/cart-shop">
-              Add To Cart
-            </Link>
+          <Button onhandleClick={() => onhandleAdd(product)}>
+            ADD TO CART
           </Button>
         </div>
         <div className="detail">
@@ -241,5 +263,4 @@ const Detail = ({ match }) => {
     </StyleDetail>
   );
 };
-
 export default Detail;
