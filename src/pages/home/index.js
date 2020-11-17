@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 import Pagination from "../../components/Pagination.js";
 import { ListCard } from "./components/ListCard";
-import Search from "../../components/Search";
+import Filter from "../../components/Filter";
 import banner from "../../assets/images/holiday.png";
 import { ProductCtx } from "../../context/ProductContext.js";
 import { LIMIT_PER_PAGE } from "../../constants/index.js";
@@ -71,7 +71,7 @@ const Home = () => {
         </div>
       </Banner>
 
-      <Search onChange={handleSearch} />
+      <Filter onChange={handleSearch} />
       {data ? <ListCard products={data} /> : null}
       <StylePagination>
         <Pagination

@@ -1,17 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import Navbar from "./Navbar.js";
 
 import logo from "../../assets/images/Logo.jpg";
+import Search from "../Search.js";
 
-const icons = [
-  "fas fa-search",
-  "far fa-heart",
-  "far fa-user",
-  "fas fa-shopping-bag",
-];
+const icons = ["far fa-heart", "far fa-user", "fas fa-shopping-bag"];
 
 const StyleHeader = styled.header`
   width: 100%;
@@ -50,7 +46,20 @@ const StyleHeader = styled.header`
   }
 `;
 
+const Button = styled.button`
+  border: 1px solid transparent;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+`;
+
 const Header = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  function toggleModal() {
+    setShowModal(!showModal);
+  }
+
   return (
     <StyleHeader>
       <div className="top_header">
@@ -61,6 +70,11 @@ const Header = () => {
         </div>
         <div className="icon">
           <ul>
+            <li>
+              <Button onClick={toggleModal}>
+                <i className="fas fa-search"></i>
+              </Button>
+            </li>
             {icons.map((item) => (
               <li key={item}>
                 <Link to="/">
@@ -72,7 +86,9 @@ const Header = () => {
         </div>
       </div>
       <Navbar></Navbar>
+      {showModal && <Search closeModule={toggleModal} />}
     </StyleHeader>
   );
 };
+
 export default Header;
