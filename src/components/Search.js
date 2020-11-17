@@ -1,57 +1,58 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
+import styled from "styled-components";
 
-import Input from "./Input";
-import Price from "./Price";
+export const StyleSearch = styled.div`
+  position: relative;
 
-import {
-  PRICE_PRODUCT,
-  RANDOM_BRAND,
-  RANDOM_COLOR,
-  RANDOM_SIZE,
-  SORT_PRODUCT,
-} from "../constants";
-import useSelect from "../utils/hooks/useSelect";
-import { getFilter } from "../utils/helpers";
+  & > div {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    padding: 20px;
+    width: 80%;
 
-const Search = ({ onChange }) => {
-  const [color, onColor] = useSelect();
-  const [brand, onBrand] = useSelect();
-  const [size, onSize] = useSelect();
-  const [price, onPrice] = useSelect();
-  const [order, onOrder] = useSelect();
+    text-align: center;
+    border: 1px solid #ccc;
+  }
 
-  useEffect(() => {
-    onChange(getFilter([color, brand, size, price, order]));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [color, brand, size, price, order]);
+  input {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    outline: none;
+
+    &:focus {
+      border: 1px solid #999;
+    }
+  }
+  button {
+    width: 8%;
+    margin-left: 2%;
+    padding: 9px;
+  }
+`;
+
+const Search = ({ closeModule, onSearch }) => {
+  const [value, setValue] = useState("");
+
+  function handleInput(e) {
+    setValue(e.target.value);
+  }
 
   return (
-    <div>
-      <Input
-        data={RANDOM_BRAND}
-        onChange={onBrand}
-        value={brand}
-        label="Brand"
-      />
-
-      <Input data={RANDOM_SIZE} onChange={onSize} value={size} label="Size" />
-
-      <Input
-        data={RANDOM_COLOR}
-        onChange={onColor}
-        value={color}
-        label="Color"
-      />
-
-      <Price data={PRICE_PRODUCT} onChange={onPrice} value={price} />
-
-      <Input
-        data={SORT_PRODUCT}
-        onChange={onOrder}
-        value={order}
-        label="Sort By"
-      />
-    </div>
+    <StyleSearch>
+      <div>
+        <input
+          placeholder="Search the store"
+          value={value}
+          onChange={handleInput}
+        />
+        <button onClick={() => onSearch(value)}>Search</button>
+        <button onClick={closeModule}>Close</button>
+      </div>
+    </StyleSearch>
   );
 };
 

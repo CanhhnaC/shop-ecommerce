@@ -4,7 +4,7 @@ import { normalize } from "styled-normalize";
 export const GlobalStyle = createGlobalStyle`
   // You can continue writing global styles here
   ${normalize}
-
+  html {  scroll-behavior: smooth;}
   *{
     font-family: helvetica-neue-regular,Arial,Helvetica,sans-serif;
     margin: 0;

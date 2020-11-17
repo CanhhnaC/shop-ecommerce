@@ -1,78 +1,108 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import Navbar from "./Navbar.js";
 
-const Header = () => {
-  const Header = styled.header`
-    width: 100%;
-    min-height: 130px;
-    border-bottom: 1px solid #e5e5e5;
+import logo from "../../assets/images/Logo.jpg";
+import Search from "../Search.js";
+import { ProductCtx } from "../../context/ProductContext.js";
+
+const icons = ["far fa-heart", "far fa-user", "fas fa-shopping-bag"];
+
+const StyleHeader = styled.header`
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background-color: #fff;
+  min-height: 130px;
+  border-bottom: 1px solid #e5e5e5;
+  z-index: 3;
+
+  img {
+    max-width: 100%;
+    display: inline-block;
     position: static;
-    img {
-      max-width: 100%;
-      display: inline-block;
-      position: static;
-      margin-top: 20px;
-    }
-    .title {
-      width: 100%;
-      text-align: center;
-    }
-    .icon ul li {
-      list-style: none;
-      margin-left: 20px;
-      font-size: 20px;
-    }
-    .icon ul li i:hover {
-      color: gray;
-    }
-    .icon ul {
-      display: flex;
-      margin-left: 80%;
-      margin-top: -20px;
-    }
-    a:visited {
-      color: black;
-    }
-  `;
+    margin-top: 20px;
+  }
+  .title {
+    width: 100%;
+    text-align: center;
+  }
+  .icon ul li {
+    list-style: none;
+    margin-left: 20px;
+    font-size: 20px;
+  }
+  .icon ul li i:hover {
+    color: gray;
+  }
+  .icon ul {
+    display: flex;
+    margin-left: 80%;
+    margin-top: -20px;
+  }
+  a:visited {
+    color: black;
+  }
+`;
+
+const Button = styled.button`
+  border: 1px solid transparent;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+`;
+
+const Header = () => {
+  const { searchs } = useContext(ProductCtx);
+  const [search, setSearch] = searchs;
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [search]);
+
+  function toggleModal() {
+    setShowModal(!showModal);
+  }
+
+  function handleSearch(e) {
+    setSearch(e);
+    toggleModal();
+  }
 
   return (
-    <Header>
+    <StyleHeader>
       <div className="top_header">
         <div className="title">
-          <img
-            alt="logo"
-            src="https://cdn11.bigcommerce.com/s-6gf5gg/images/stencil/250x100/natori_logo_1461095269__14320.original.png"
-          ></img>
+          <Link to="/">
+            <img alt="logo" src={logo} />
+          </Link>
         </div>
         <div className="icon">
           <ul>
             <li>
-              <a href="/">
-                <i class="fas fa-search"></i>
-              </a>
+              <Button onClick={toggleModal}>
+                <i className="fas fa-search"></i>
+              </Button>
             </li>
-            <li>
-              <a href="/">
-                <i class="far fa-heart"></i>
-              </a>
-            </li>
-            <li>
-              <a href="/">
-                <i class="far fa-user"></i>
-              </a>
-            </li>
-            <li>
-              <a href="/">
-                <i class="fas fa-shopping-bag"></i>
-              </a>
-            </li>
+            {icons.map((item) => (
+              <li key={item}>
+                <Link to="/">
+                  <i className={item} />
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
       <Navbar></Navbar>
-    </Header>
+      {showModal && (
+        <Search closeModule={toggleModal} onSearch={handleSearch} />
+      )}
+    </StyleHeader>
   );
 };
+
 export default Header;

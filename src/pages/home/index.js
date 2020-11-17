@@ -1,39 +1,87 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
-
+import Pagination from "../../components/Pagination.js";
 import { ListCard } from "./components/ListCard";
-import Search from "../../components/Search";
-import { getProducts } from "../../utils/api/productsApi";
+import Filter from "../../components/Filter";
 import banner from "../../assets/images/holiday.png";
+import { ProductCtx } from "../../context/ProductContext.js";
+import { LIMIT_PER_PAGE } from "../../constants/index.js";
 
-const Image = styled.img`
-  max-width: 100%;
-  height: auto;
+const Banner = styled.div`
+  position: relative;
+  img {
+    width: 100%;
+    height: auto;
+  }
+  & > div {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    div {
+      position: relative;
+      left: -50%;
+
+      h3 {
+        font-family: "Times New Roman", Times, serif;
+        font-size: 28px;
+        color: #fff;
+        letter-spacing: 0.25px;
+        text-transform: uppercase;
+      }
+    }
+  }
+`;
+
+const StylePagination = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const Main = styled.div`
+  margin: 0 20px;
 `;
 
 const Home = () => {
-  const [data, setData] = useState([]);
-  const [options, setOptions] = useState("");
+  const { products, options, pages, totals } = useContext(ProductCtx);
+  const [total] = totals;
+  const data = products[0];
+  const setOption = options[1];
+  const [page, setPage] = pages;
 
   useEffect(() => {
-    const getData = async () => {
-      await getProducts(options)
-        .then((result) => setData(result.data))
-        .catch((error) => console.log(error));
-    };
-    getData();
-  }, [options]);
+    window.scrollTo(0, 0);
+  }, [page]);
 
-  function handleChange(options) {
-    setOptions(options);
+  function handleSearch(options) {
+    setOption(options);
   }
+  const handlePagination = (event) => {
+    setPage(event);
+  };
 
   return (
-    <div style={{ margin: "20px" }}>
-      <Image src={banner} alt="Banner" />
-      <Search onChange={handleChange} />
+    <Main>
+      <Banner>
+        <img src={banner} alt="Banner" />
+        <div>
+          <div>
+            <h3>HOLIDAY LOOKS</h3>
+          </div>
+        </div>
+      </Banner>
+
+      <Filter onChange={handleSearch} />
       {data ? <ListCard products={data} /> : null}
-    </div>
+      <StylePagination>
+        <Pagination
+          onHandle={handlePagination}
+          start={page}
+          limit={LIMIT_PER_PAGE}
+          totalPage={total}
+        />
+      </StylePagination>
+    </Main>
   );
 };
 
