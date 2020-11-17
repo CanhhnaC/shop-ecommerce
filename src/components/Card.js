@@ -77,7 +77,7 @@ export const StyleCard = styled.div`
   }
 `;
 
-export const Card = ({ product }) => {
+export const Card = ({ product, onhandleClick }) => {
   return (
     <StyleCard img={product.image}>
       <Link to={`/product/${product.id}`}>
@@ -95,10 +95,11 @@ export const Card = ({ product }) => {
       <h5>Brand: {product.brand}</h5>
       <h5>Size: {product.size}</h5>
       <div className="round">
-        <Button>Add To Cart</Button>
+        <Button onhandleClick={onhandleClick} id={product}>
+          Add To Cart
+        </Button>
       </div>
     </StyleCard>
   );
 };
-
 export default Card;

@@ -20,6 +20,7 @@ const StyledPagination = styled.ul`
 
 const Pagination = ({ start, totalPage, limit, onHandle }) => {
   const pages = Math.ceil(totalPage / limit);
+  console.log(pages);
   const paginator = [];
   const [currentPage, setCurrentPage] = useState(start <= pages ? start : 1);
   let ellipsisLeft = false;

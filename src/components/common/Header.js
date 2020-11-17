@@ -1,30 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-
 import Navbar from "./Navbar.js";
-
-import logo from "../../assets/images/Logo.jpg";
-import Search from "../Search.js";
+import { useHistory } from "react-router-dom";
 import { ProductCtx } from "../../context/ProductContext.js";
+import Search from "../Search.js";
+import logo from "../../assets/images/Logo.jpg";
 
-const icons = ["far fa-heart", "far fa-user", "fas fa-shopping-bag"];
+let icons = ["a", "b"];
 
 const StyleHeader = styled.header`
   width: 100%;
-  position: fixed;
-  top: 0;
-  background-color: #fff;
   min-height: 130px;
   border-bottom: 1px solid #e5e5e5;
-  z-index: 3;
+  position: static;
+  margin-top: 20px;
 
-  img {
-    max-width: 100%;
-    display: inline-block;
-    position: static;
-    margin-top: 20px;
-  }
   .title {
     width: 100%;
     text-align: center;
@@ -58,6 +49,13 @@ const Header = () => {
   const { searchs } = useContext(ProductCtx);
   const [search, setSearch] = searchs;
   const [showModal, setShowModal] = useState(false);
+
+  const history = useHistory();
+
+  const gotoCart = (e) => {
+    e.preventDefault();
+    history.push("/cart");
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -94,6 +92,11 @@ const Header = () => {
                 </Link>
               </li>
             ))}
+            <li>
+              <Button onClick={gotoCart}>
+                <i className="fas fa-shopping-bag"></i>
+              </Button>
+            </li>
           </ul>
         </div>
       </div>
