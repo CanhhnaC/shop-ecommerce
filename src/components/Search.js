@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 export const StyleSearch = styled.div`
@@ -34,12 +34,22 @@ export const StyleSearch = styled.div`
   }
 `;
 
-const Search = ({ closeModule, clickSearch }) => {
+const Search = ({ closeModule, onSearch }) => {
+  const [value, setValue] = useState("");
+
+  function handleInput(e) {
+    setValue(e.target.value);
+  }
+
   return (
     <StyleSearch>
       <div>
-        <input placeholder="Search the store" />
-        <button onClick={clickSearch}>Search</button>
+        <input
+          placeholder="Search the store"
+          value={value}
+          onChange={handleInput}
+        />
+        <button onClick={() => onSearch(value)}>Search</button>
         <button onClick={closeModule}>Close</button>
       </div>
     </StyleSearch>

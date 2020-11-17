@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -6,6 +6,7 @@ import Navbar from "./Navbar.js";
 
 import logo from "../../assets/images/Logo.jpg";
 import Search from "../Search.js";
+import { ProductCtx } from "../../context/ProductContext.js";
 
 const icons = ["far fa-heart", "far fa-user", "fas fa-shopping-bag"];
 
@@ -54,10 +55,21 @@ const Button = styled.button`
 `;
 
 const Header = () => {
+  const { searchs } = useContext(ProductCtx);
+  const [search, setSearch] = searchs;
   const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [search]);
 
   function toggleModal() {
     setShowModal(!showModal);
+  }
+
+  function handleSearch(e) {
+    setSearch(e);
+    toggleModal();
   }
 
   return (
@@ -86,7 +98,9 @@ const Header = () => {
         </div>
       </div>
       <Navbar></Navbar>
-      {showModal && <Search closeModule={toggleModal} />}
+      {showModal && (
+        <Search closeModule={toggleModal} onSearch={handleSearch} />
+      )}
     </StyleHeader>
   );
 };

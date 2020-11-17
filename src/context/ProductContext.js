@@ -10,6 +10,7 @@ const ProductProvider = ({ children }) => {
   const [page, setPage] = useState(1);
   const [option, setOption] = useState("");
   const [total, setTotal] = useState(0);
+  const [search, setSearch] = useState();
 
   const store = {
     products: [product, setProduct],
@@ -17,12 +18,16 @@ const ProductProvider = ({ children }) => {
     pages: [page, setPage],
     options: [option, setOption],
     totals: [total, setTotal],
+    searchs: [search, setSearch],
   };
 
   useEffect(() => {
     (async function getData() {
       await Axios.get(
-        API_URL + `${option}_page=${page}&_limit=${LIMIT_PER_PAGE}&`
+        API_URL +
+          `${option}_page=${page}&_limit=${LIMIT_PER_PAGE}&${
+            search && "q=" + search
+          }`
       )
         .then((result) => {
           setProduct(result.data);
@@ -30,7 +35,7 @@ const ProductProvider = ({ children }) => {
         })
         .catch((error) => console.log(error));
     })();
-  }, [option, page]);
+  }, [option, page, search]);
 
   return <ProductCtx.Provider value={store}>{children}</ProductCtx.Provider>;
 };
