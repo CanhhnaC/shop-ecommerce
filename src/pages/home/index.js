@@ -42,7 +42,7 @@ const Home = () => {
         <div className="pagination">
           <Pagination
             onhandle={onHandle}
-            start={START_FORM}
+            start={page}
             limit={LIMIT_PAGE}
             totalPage={total}
           ></Pagination>
