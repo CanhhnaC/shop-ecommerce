@@ -137,11 +137,7 @@ const StyleDetail = styled.div`
 `;
 const Detail = ({ match }) => {
   const [product, setProduct] = useState([]);
-<<<<<<< HEAD
-  const [quatity, setQuatity] = useState(1);
-=======
   const [quality, setQuality] = useState(1);
->>>>>>> search-context
   const mathKey = parseInt(match.match.params.id);
 
   useEffect(() => {
@@ -191,29 +187,17 @@ const Detail = ({ match }) => {
               <button
                 className="decrement"
                 onClick={() => {
-<<<<<<< HEAD
-                  if (quatity > 1) {
-                    setQuatity(quatity - 1);
-=======
                   if (quality > 1) {
                     setQuality(quality - 1);
->>>>>>> search-context
                   }
                 }}
               >
                 <span>-</span>
               </button>
-<<<<<<< HEAD
-              <input type="tel" value={quatity} />
-              <button
-                className="increment"
-                onClick={() => setQuatity(quatity + 1)}
-=======
               <input type="tel" value={quality} />
               <button
                 className="increment"
                 onClick={() => setQuality(quality + 1)}
->>>>>>> search-context
               >
                 <span>+</span>
               </button>
