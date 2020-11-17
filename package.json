@@ -24,7 +24,7 @@
     "test:api": "node tools/apiServer.js",
     "start": "run-p start:dev start:api",
     "prebuild": "node tools/createMockDb.js",
-    "start:api": "json-server tools/db.json --port 3001",
+    "start:api": "json-server --host 0.0.0.0 tools/db.json --port 3001",
     "build": "react-scripts build",
     "format": "prettier --write \"src/**/*.{js,css}\"",
     "lint": "eslint src/ --ext .js,.jsx"

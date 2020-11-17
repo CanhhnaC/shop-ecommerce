@@ -27,7 +27,7 @@ const Pagination = ({ start, totalPage, limit, onHandle }) => {
 
   onHandle(currentPage);
 
-  for (let i = 1; i < pages; i++) {
+  for (let i = 1; i <= pages; i++) {
     if (i === currentPage) {
       paginator.push({ id: i, current: true, ellipsis: false });
     } else {
