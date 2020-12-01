@@ -47,7 +47,7 @@ const Item = ({ product, onhandleRemove, onhandleNext, onhandlePre }) => {
     <StyleItem>
       <td className="content">
         <div className="img">
-          <img alt="##" src={product.image} />
+          <img alt="product name" src={product.image} />
         </div>
         <div>
           <p>{product.brand}</p>
